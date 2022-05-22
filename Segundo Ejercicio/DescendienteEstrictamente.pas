@@ -1,14 +1,54 @@
 
 Program DesdendienteeEstrictamente;
+
 Uses Crt;
 
-Begin
-  While (Numero <> 0) do
-    begin
-      Writeln('Este programa ordena ')
-    end;
-End.
+Var 
 
+  //* NumAnt: El numero anterior al que se ingresa; NumPost: El Numero que rompe la secuencia descendente; Descendente: El booleano que almacena si es descendente o no. 
+  Num, i, NumPost,NumAnt: Integer;
+  Descendente: Boolean;
+
+Begin
+  //*Se inicializa el contador a 1 para que cuente el 0 dentro de la secuencia; tambien se inicializa el booleano en verdadero porque idealmente todos los numeros ingresados seran mayores que 0, el ultimo de la secuencia.
+  i := 1;
+  Descendente := true;
+
+  Writeln('Este programa verifica si una secuencia de numeros es descendiente.');
+  Writeln('Ingrese una secuencia de numeros enteros terminada por 0.');
+  Readln(Num);
+
+  //*Se aumenta el numero anterior en 1 al ingresado para que siempre sea mayor en la primera iteracion. 
+  NumAnt := Num+1;
+
+  While (Num<>0) Do
+    Begin
+
+      i := i+1;
+
+      //*Se verifica si la secuencia esta siendo descendente, y si no, se asigna un falso al booleano y se guardan los valores de los numeros de la secuencia que rompieron el patron, es decir, el anterior y el ingresado que es mayor al anterior.
+      If (NumAnt <= Num) And (descendente=true) Then
+        Begin
+          Descendente := false;
+          NumPost := Num;
+          NumAnt := NumAnt;
+        End;
+
+      //*Se verifica si sigue siendo descendente para asignar el numero ingresado al numero anterior para la siguiente iteracion
+      If (Descendente=true) Then
+        NumAnt := Num;
+
+      Writeln('Ingrese otro numero');
+      Readln(Num);
+    End;
+
+  //*Se envia un mensaje mostrando si la secuencia es descendente o no.
+  If Descendente=true Then
+    Writeln('Su lista de ',i,' elementos es descendente.')
+  Else
+    Writeln('Su lista de ',i,' elementos NO es descendente, ya que aparece ',NumAnt,' seguido de ',NumPost,'.');
+  Readkey();
+End.
 
 
 
