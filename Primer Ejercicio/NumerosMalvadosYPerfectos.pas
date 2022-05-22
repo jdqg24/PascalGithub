@@ -1,22 +1,22 @@
-
 Program NumerosPerfectos_Y_NumerosMalvados;
 
 Uses Crt;
 
 Var 
-  Numero,AuxiliarBinario,AuxilairPerfecto,AuxiliarBinario2,Perfectos,malvados,
+  Numero,AuxBin,AuxilairPerfecto,AuxBin2,Perfectos,malvados,
   MayorPerfecto,MayorMalvado,MenorPerfecto,MenorMalvado,i,j:  Integer;
 
   PromedioPerfectos,PromedioMalvados:  Real;
 Begin
 
-  //Juandi si lees esto sos un pro y yo tmbn
+  //Tqm Edui
   j := 0;
   perfectos := 0;
   malvados := 0;
   AuxilairPerfecto := 0;
   PromedioMalvados := 0;
   PromedioPerfectos := 0;
+  AuxBin2 := 0;
 
   MayorMalvado  := 0;
   MayorPerfecto := 0;
@@ -28,7 +28,7 @@ Begin
   MenorMalvado := Numero+1;
   MenorPerfecto := Numero+1;
 
-While Numero<>0 Do
+  While Numero<>0 Do
     Begin
       //*Se verifican los numeros perfectos
       AuxilairPerfecto := 0;
@@ -53,17 +53,17 @@ While Numero<>0 Do
 
 
       //*Se verifican los numeros malvados
-      AuxiliarBinario := Numero;
+      AuxBin := Numero;
       j := 0;
       //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       Repeat
-        AuxiliarBinario2 := AuxiliarBinario Mod 2;
-        AuxiliarBinario := AuxiliarBinario Div 2;
-        If AuxiliarBinario2 <> 0 Then
+        AuxBin2 := AuxBin2 Mod 2;
+        AuxBin := AuxBin Div 2;
+        If AuxBin2 <> 0 Then
           Begin
             j := j+1;
           End;
-      Until (AuxiliarBinario=0);
+      Until (AuxBin=0);
 
 
       //*Se cuentan y acumulan los malvados, y se verifica si hay un nuevo mayor y menor;
@@ -79,41 +79,41 @@ While Numero<>0 Do
 
         End;
 
-
-
-
       //*
       Writeln('Ingrese otro numero.');
       Readln(Numero);
 
     End;
 
+  If Perfectos<>0 Then
+    Begin
+      PromedioPerfectos := PromedioPerfectos/Perfectos;
+      Writeln('Numeros Perfectos: ');
+      Writeln('El mayor es: ', MayorPerfecto);
+      Writeln('El menor es: ', MenorPerfecto);
+      Writeln('Y su promedio fue de: ',PromedioPerfectos:0:2);
+      Writeln('------------------------------------------------');
+    End
+  Else
+    Begin
+      Writeln('No hubieron Numeros Perfectos');
+      Writeln('------------------------------------------------');
+    End;
   If Malvados<>0 Then
-    PromedioMalvados := PromedioMalvados/malvados
+    Begin
+      PromedioMalvados := PromedioMalvados/malvados;
+      Writeln('Numeros Malvados: ');
+      Writeln('El mayor es: ', MayorMalvado);
+      Writeln('El menor es: ',MenorMalvado);
+      Writeln('Y su promedio fue de: ',PromedioMalvados:0:2);
+    End
   Else
     Writeln('No hubieron Numeros Malvados');
 
-  If Perfectos<>0 Then
-    PromedioPerfectos := PromedioPerfectos/Perfectos
-  Else
-    Writeln('No hubieron Numeros Perfectos');
 
-
-
-  Writeln('Numeros Perfectos: ');
-  Writeln('El mayor es: ', MayorPerfecto);
-  Writeln('El menor es: ',MenorPerfecto);
-  Writeln('Y su promedio fue de: ',PromedioPerfectos:0:2);
-  Writeln('------------------------------------------------');
-  Writeln('Numeros Malvados: ');
-  Writeln('El mayor es: ', MayorMalvado);
-  Writeln('El menor es: ',MenorMalvado);
-  Writeln('Y su promedio fue de: ',PromedioMalvados:0:2);
   Readkey();
 
 End.
-
-
 
 
 
